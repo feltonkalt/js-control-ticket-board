@@ -16,12 +16,14 @@ const selectCategory = document.getElementById('selectCategory');
 
 const addTicketBtn = document.getElementById('AddTicketBtn');
 
+
 rendertickets();
 
 
 addTicketBtn.addEventListener('click', () => {
     NewTicket();
 });
+
 
 
 
@@ -60,16 +62,29 @@ function rendertickets() {
 
         const completeBtn = document.createElement('button');
         completeBtn.className = 'completeBtn';
+        completeBtn.id = 'completeBtn';
         completeBtn.textContent = 'Выполнить';
+        completeBtn.addEventListener('click', () => {
+            completeticket();
+        });
+
+        const deleteTicketBtn = document.createElement('button');
+        deleteTicketBtn.className ='deleteTicketBtn';
+        deleteTicketBtn.textContent = 'Удалить';
+        deleteTicketBtn.addEventListener('click', () =>{
+            deleteTicket();
+        });
+
+
 
         if (tickets[index].done == true) {
             divTicket.append(titleEl, roomEl, categoryEl, doneEl)
-            item.append(divTicket);
+            item.append(divTicket, deleteTicketBtn);
             ticketsUl.append(item);
         }
         else {
             divTicket.append(titleEl, roomEl, categoryEl, doneEl)
-            item.append(divTicket, completeBtn);
+            item.append(divTicket, completeBtn, deleteTicketBtn);
             ticketsUl.append(item);
         }
 
@@ -108,3 +123,12 @@ function NewTicket() {
     selectCategory.value = 0;
 
 };
+
+function deleteTicket(){
+    
+}
+
+function completeticket() {
+    tickets.done = true;
+    rendertickets();
+}
