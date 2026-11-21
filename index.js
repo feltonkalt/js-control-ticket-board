@@ -33,6 +33,9 @@ function rendertickets() {
         const item = document.createElement('li');
         item.className = 'itemTicket';
 
+        const divTicket = document.createElement('div');
+        divTicket.className = 'divTicket';
+
         const titleEl = document.createElement('p');
         titleEl.className = 'titles';
         titleEl.textContent = `Проблема: ${tickets[index].titles}`;
@@ -47,16 +50,29 @@ function rendertickets() {
 
         const doneEl = document.createElement('p');
         doneEl.className = 'doneEl';
+
         if (tickets[index].done == true) {
             doneEl.textContent = ` Статус: Решена`;
         }
         else {
             doneEl.textContent = ` Статус: Не решена`;
-
         }
 
-        item.append(titleEl, roomEl, categoryEl, doneEl);
-        ticketsUl.append(item);
+        const completeBtn = document.createElement('button');
+        completeBtn.className = 'completeBtn';
+        completeBtn.textContent = 'Выполнить';
+
+        if (tickets[index].done == true) {
+            divTicket.append(titleEl, roomEl, categoryEl, doneEl)
+            item.append(divTicket);
+            ticketsUl.append(item);
+        }
+        else {
+            divTicket.append(titleEl, roomEl, categoryEl, doneEl)
+            item.append(divTicket, completeBtn);
+            ticketsUl.append(item);
+        }
+
     });
 };
 
