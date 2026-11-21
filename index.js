@@ -16,6 +16,8 @@ const selectCategory = document.getElementById('selectCategory');
 
 const addTicketBtn = document.getElementById('AddTicketBtn');
 
+const freeTicket = document.getElementById('freeTicket');
+
 
 rendertickets();
 
@@ -125,7 +127,9 @@ function NewTicket() {
 };
 
 function deleteTicket(){
-    
+    tickets.forEach((ticket, index) => {
+        
+    });
 }
 
 function completeticket() {
