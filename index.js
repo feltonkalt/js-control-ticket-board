@@ -14,9 +14,16 @@ const roomError = document.getElementById('roomError');
 
 const selectCategory = document.getElementById('selectCategory');
 
-const addTicketBtn = document.getElementById('addTicketBtn');
+const addTicketBtn = document.getElementById('AddTicketBtn');
 
 rendertickets();
+
+
+addTicketBtn.addEventListener('click', () =>{
+    NewTicket();
+});
+
+
 
 function rendertickets() {
     ticketsUl.innerHTML = '';
@@ -51,4 +58,29 @@ function rendertickets() {
         item.append(titleEl, roomEl, categoryEl, doneEl);
         ticketsUl.append(item);
     });
+};
+
+function NewTicket() {
+    const inputTitleVal = +inputTitle.value.trim();
+    const inputRoomVal = +inputRoom.value.trim();
+    const selectCategoryVal = +selectCategory.value;
+
+    if(inputRoomVal === null || inputTitleVal === null ){
+        alert('Поле ввода комнаты и проблемы не должно быть пустым');
+        return;
+    }
+    if(selectCategoryVal == null){
+        alert('Выберите категорию');
+        return;
+    }
+
+    tickets.push({
+        titles: inputTitleVal,
+        room: inputRoomVal,
+        category: selectCategoryVal,
+        done: false,
+    });
+
+    rendertickets();
+
 };
