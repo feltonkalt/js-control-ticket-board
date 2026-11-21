@@ -7,7 +7,7 @@ const tickets = [
 const ticketsUl = document.getElementById('ticketsUl');
 
 const inputTitle = document.getElementById('inputTitle');
-const inputRoom = document.getElementById('inputTitle');
+const inputRoom = document.getElementById('inputRoom');
 
 const titleError = document.getElementById('titleError');
 const roomError = document.getElementById('roomError');
@@ -19,7 +19,7 @@ const addTicketBtn = document.getElementById('AddTicketBtn');
 rendertickets();
 
 
-addTicketBtn.addEventListener('click', () =>{
+addTicketBtn.addEventListener('click', () => {
     NewTicket();
 });
 
@@ -61,15 +61,19 @@ function rendertickets() {
 };
 
 function NewTicket() {
-    const inputTitleVal = +inputTitle.value.trim();
-    const inputRoomVal = +inputRoom.value.trim();
+    const inputTitleVal = inputTitle.value.trim();
+    const inputRoomVal = inputRoom.value.trim();
     const selectCategoryVal = +selectCategory.value;
 
-    if(inputRoomVal === null || inputTitleVal === null ){
-        alert('Поле ввода комнаты и проблемы не должно быть пустым');
+    if (inputTitleVal == '') {
+        titleError.innerHTML = 'Поле ввода проблемы не должно быть пустым';
         return;
     }
-    if(selectCategoryVal == 0){
+    if (inputRoomVal == '') {
+        roomError.innerHTML = 'Поле ввода комнаты не должно быть пустым';
+        return;
+    }
+    if (selectCategoryVal == 0) {
         alert('Выберите категорию');
         return;
     }
@@ -83,8 +87,8 @@ function NewTicket() {
 
     rendertickets();
 
-};
-
-function renderCategory(){
+    inputRoom.value = '';
+    inputTitle.value = '';
+    selectCategory.value = 0;
 
 };
