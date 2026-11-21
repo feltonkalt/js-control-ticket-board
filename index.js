@@ -28,7 +28,6 @@ addTicketBtn.addEventListener('click', () => {
 
 
 
-
 function rendertickets() {
     ticketsUl.innerHTML = '';
 
@@ -67,14 +66,14 @@ function rendertickets() {
         completeBtn.id = 'completeBtn';
         completeBtn.textContent = 'Выполнить';
         completeBtn.addEventListener('click', () => {
-            completeticket();
+            completeticket(index);
         });
 
         const deleteTicketBtn = document.createElement('button');
         deleteTicketBtn.className ='deleteTicketBtn';
         deleteTicketBtn.textContent = 'Удалить';
         deleteTicketBtn.addEventListener('click', () =>{
-            deleteTicket();
+            deleteTicket(index, item);
         });
 
 
@@ -126,13 +125,12 @@ function NewTicket() {
 
 };
 
-function deleteTicket(){
-    tickets.forEach((ticket, index) => {
-        
-    });
+function deleteTicket(index, item){
+   tickets[index] = tickets.splice();
+   rendertickets();
 }
 
-function completeticket() {
-    tickets.done = true;
+function completeticket(index) {
+    tickets[index].done = true;
     rendertickets();
 }
