@@ -69,7 +69,7 @@ function NewTicket() {
         alert('Поле ввода комнаты и проблемы не должно быть пустым');
         return;
     }
-    if(selectCategoryVal == null){
+    if(selectCategoryVal == 0){
         alert('Выберите категорию');
         return;
     }
@@ -82,5 +82,9 @@ function NewTicket() {
     });
 
     rendertickets();
+
+};
+
+function renderCategory(){
 
 };
