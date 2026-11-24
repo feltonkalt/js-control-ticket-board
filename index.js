@@ -26,70 +26,150 @@ addTicketBtn.addEventListener('click', () => {
     NewTicket();
 });
 
-
+freeTicket.addEventListener('change', () => {
+    rendertickets();
+});
 
 function rendertickets() {
     ticketsUl.innerHTML = '';
 
-    tickets.forEach((ticket, index) => {
+    if (freeTicket.checked) {
 
-        const item = document.createElement('li');
-        item.className = 'itemTicket';
+        tickets.forEach((Freeticket, index) => {
+            if (Freeticket.done === true) {
+                return;
+            }
 
-        const divTicket = document.createElement('div');
-        divTicket.className = 'divTicket';
+            const item = document.createElement('li');
+            item.className = 'itemTicket';
 
-        const titleEl = document.createElement('p');
-        titleEl.className = 'titles';
-        titleEl.textContent = `Проблема: ${tickets[index].titles}`;
+            const divTicket = document.createElement('div');
+            divTicket.className = 'divTicket';
 
-        const roomEl = document.createElement('p');
-        roomEl.className = 'roomEl';
-        roomEl.textContent = `Кабинет: ${tickets[index].room}`;
+            const titleEl = document.createElement('p');
+            titleEl.className = 'titles';
+            titleEl.textContent = `Проблема: ${tickets[index].titles}`;
 
-        const categoryEl = document.createElement('p');
-        categoryEl.className = 'categoryEl';
-        categoryEl.textContent = tickets[index].category;
+            const roomEl = document.createElement('p');
+            roomEl.className = 'roomEl';
+            roomEl.textContent = `Кабинет: ${tickets[index].room}`;
 
-        const doneEl = document.createElement('p');
-        doneEl.className = 'doneEl';
+            const categoryEl = document.createElement('p');
+            categoryEl.className = 'categoryEl';
+            categoryEl.textContent = tickets[index].category;
 
-        if (tickets[index].done == true) {
-            doneEl.textContent = ` Статус: Решена`;
-        }
-        else {
-            doneEl.textContent = ` Статус: Не решена`;
-        }
+            const doneEl = document.createElement('p');
+            doneEl.className = 'doneEl';
 
-        const completeBtn = document.createElement('button');
-        completeBtn.className = 'completeBtn';
-        completeBtn.id = 'completeBtn';
-        completeBtn.textContent = 'Выполнить';
-        completeBtn.addEventListener('click', () => {
-            completeticket(index);
+
+
+            if (tickets[index].done == true) {
+                doneEl.textContent = ` Статус: Решена`;
+            }
+            else {
+                doneEl.textContent = ` Статус: Не решена`;
+            }
+
+
+            const completeBtn = document.createElement('button');
+            completeBtn.className = 'completeBtn';
+            completeBtn.id = 'completeBtn';
+            completeBtn.textContent = 'Выполнить';
+            completeBtn.addEventListener('click', () => {
+                completeticket(index);
+            });
+
+            const deleteTicketBtn = document.createElement('button');
+            deleteTicketBtn.className = 'deleteTicketBtn';
+            deleteTicketBtn.textContent = 'Удалить';
+            deleteTicketBtn.addEventListener('click', () => {
+                deleteTicket(index, item);
+            });
+
+
+
+            if (tickets[index].done == true) {
+                divTicket.append(titleEl, roomEl, categoryEl, doneEl)
+                item.append(divTicket, deleteTicketBtn);
+                ticketsUl.append(item);
+            }
+            else {
+                divTicket.append(titleEl, roomEl, categoryEl, doneEl)
+                item.append(divTicket, completeBtn, deleteTicketBtn);
+                ticketsUl.append(item);
+            }
+
+
+
         });
+    }
+    else {
 
-        const deleteTicketBtn = document.createElement('button');
-        deleteTicketBtn.className ='deleteTicketBtn';
-        deleteTicketBtn.textContent = 'Удалить';
-        deleteTicketBtn.addEventListener('click', () =>{
-            deleteTicket(index, item);
+        tickets.forEach((ticket, index) => {
+
+            const item = document.createElement('li');
+            item.className = 'itemTicket';
+
+            const divTicket = document.createElement('div');
+            divTicket.className = 'divTicket';
+
+            const titleEl = document.createElement('p');
+            titleEl.className = 'titles';
+            titleEl.textContent = `Проблема: ${tickets[index].titles}`;
+
+            const roomEl = document.createElement('p');
+            roomEl.className = 'roomEl';
+            roomEl.textContent = `Кабинет: ${tickets[index].room}`;
+
+            const categoryEl = document.createElement('p');
+            categoryEl.className = 'categoryEl';
+            categoryEl.textContent = tickets[index].category;
+
+            const doneEl = document.createElement('p');
+            doneEl.className = 'doneEl';
+
+
+
+            if (tickets[index].done == true) {
+                doneEl.textContent = ` Статус: Решена`;
+            }
+            else {
+                doneEl.textContent = ` Статус: Не решена`;
+            }
+
+
+            const completeBtn = document.createElement('button');
+            completeBtn.className = 'completeBtn';
+            completeBtn.id = 'completeBtn';
+            completeBtn.textContent = 'Выполнить';
+            completeBtn.addEventListener('click', () => {
+                completeticket(index);
+            });
+
+            const deleteTicketBtn = document.createElement('button');
+            deleteTicketBtn.className = 'deleteTicketBtn';
+            deleteTicketBtn.textContent = 'Удалить';
+            deleteTicketBtn.addEventListener('click', () => {
+                deleteTicket(index, item);
+            });
+
+
+
+            if (tickets[index].done == true) {
+                divTicket.append(titleEl, roomEl, categoryEl, doneEl)
+                item.append(divTicket, deleteTicketBtn);
+                ticketsUl.append(item);
+            }
+            else {
+                divTicket.append(titleEl, roomEl, categoryEl, doneEl)
+                item.append(divTicket, completeBtn, deleteTicketBtn);
+                ticketsUl.append(item);
+            }
+
+
+
         });
-
-
-
-        if (tickets[index].done == true) {
-            divTicket.append(titleEl, roomEl, categoryEl, doneEl)
-            item.append(divTicket, deleteTicketBtn);
-            ticketsUl.append(item);
-        }
-        else {
-            divTicket.append(titleEl, roomEl, categoryEl, doneEl)
-            item.append(divTicket, completeBtn, deleteTicketBtn);
-            ticketsUl.append(item);
-        }
-
-    });
+    };
 };
 
 function NewTicket() {
@@ -125,9 +205,9 @@ function NewTicket() {
 
 };
 
-function deleteTicket(index, item){
-   tickets[index] = tickets.splice();
-   rendertickets();
+function deleteTicket(index, item) {
+    tickets[index] = tickets.splice();
+    rendertickets();
 }
 
 function completeticket(index) {
