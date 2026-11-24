@@ -3,8 +3,53 @@
     margin: 0;
     box-sizing: border-box;
 }
+
 .container {
     max-width: 1920px;
     margin-inline: auto;
-    padding-inline:120px;
+    padding-inline: 120px;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.addTick {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#AddTicketBtn {
+    width: 120px;
+    height: auto;
+}
+
+#titleError {
+    color: red;
+}
+
+#roomError {
+    color: red;
+}
+
+ul {
+    list-style-type: none;
+}
+#ticketsUl{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.itemTicket{
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgb(242, 245, 248);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
