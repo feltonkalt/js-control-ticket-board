@@ -150,7 +150,8 @@ function rendertickets() {
             deleteTicketBtn.className = 'deleteTicketBtn';
             deleteTicketBtn.textContent = 'Удалить';
             deleteTicketBtn.addEventListener('click', () => {
-                deleteTicket(index, item);
+                deleteTicket(index);
+
             });
 
 
@@ -204,9 +205,8 @@ function NewTicket() {
     selectCategory.value = 0;
 
 };
-
-function deleteTicket(index, item) {
-    tickets[index] = tickets.splice();
+function deleteTicket(index) {
+    tickets.splice(index, 1);
     rendertickets();
 }
 
