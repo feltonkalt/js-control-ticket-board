@@ -11,32 +11,38 @@
 </head>
 
 <body>
+    <div class="container">
+        <section>
+            <h1> Заявки корпуса</h1>
+            <div class="addTick">
+                <div class="inpTit">
+                    <label for="inputTitle"> Что случилось?</label>
+                    <input type="text" id="inputTitle">
+                    <p id="titleError"></p>
+                </div>
+                <div class="inpWhat">
+                    <label for="inputRoom"> Где случилось?</label>
+                    <input type="text" id="inputRoom">
+                    <p id="roomError"></p>
+                </div>
 
-    <section>
-        <h1> Заявки корпуса</h1>
-        <label for="inputTitle"> Что случилось?</label>
-        <input type="text" id="inputTitle">
-        <p id="titleError"></p>
+                <label for="selectCategory"> Выберите категорию</label>
+                <select id="selectCategory">
+                    <option value="0"></option>
+                    <option value="1"> Оборудование</option>
+                    <option value="2"> Аудитория </option>\
+                    <option value="3"> Другое</option>
+                </select>
 
-        <label for="inputRoom"> Где случилось?</label>
-        <input type="text" id="inputRoom">
-        <p id="roomError"></p>
-
-        <label for="selectCategory"> Выберите категорию</label>
-        <select id="selectCategory">
-            <option value="0"></option>
-            <option value="1"> Оборудование</option>
-            <option value="2"> Аудитория </option>\
-            <option value="3"> Другое</option>
-        </select>
-
-
-        <button id="AddTicketBtn"> Добавить зявку</button>
-
-        <ul id="ticketsUl"></ul>
-        <input type="checkbox" id="freeTicket">
-        <label for="freeTicket">Показать только открытые заявки</label>
-    </section>
+                <button id="AddTicketBtn"> Добавить зявку</button>
+            </div>
+            <ul id="ticketsUl"></ul>
+            <div class="check">
+                <input type="checkbox" id="freeTicket">
+                <label for="freeTicket">Показать только открытые заявки</label>
+            </div>
+        </section>
+    </div>
 
 </body>
 
