@@ -37,11 +37,25 @@
 
                 <button id="AddTicketBtn"> Добавить зявку</button>
             </div>
-            <ul id="ticketsUl"></ul>
             <div class="check">
-                <input type="checkbox" id="freeTicket">
-                <label for="freeTicket">Показать только открытые заявки</label>
+                <div class="filt">
+                    <label for="SelectFilter">Фильтровать по категориям:</label>
+                    <select id="SelectFilter">
+                        <option value="0"></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="FreeTick">
+                    <input type="checkbox" id="freeTicket">
+                    <label for="freeTicket">Показать только открытые заявки</label>
+                </div>
+                <div class="NotDone">
+                    <input type="checkbox" id="NotDoneTicket">
+                    <label for="NotDoneTicket">Показать только не выполненные заявки</label>
+                </div>
             </div>
+            <ul id="ticketsUl"></ul>
         </section>
     </div>
 

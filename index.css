@@ -83,3 +83,15 @@ select:hover {
     background-color: rgb(226, 229, 233);
     border: 2px solid rgb(82, 94, 105);
 }
+.completeBtn{
+     border: 2px solid rgb(42, 52, 61);
+    background-color: rgb(215, 245, 218);
+}
+.completeBtn:hover{
+     border: 2px solid rgb(42, 52, 61);
+    background-color: rgb(194, 223, 197);
+}
+.deleteTicketBtn{
+     border: 2px solid rgb(42, 52, 61);
+    background-color: rgb(245, 215, 215);
+}
