@@ -21,7 +21,7 @@ const freeTicket = document.getElementById('freeTicket');
 const notDoneTicket = document.getElementById('NotDoneTicket');
 
 const selectFilter = document.getElementById('SelectFilter');
-const selectFilterVal = +selectFilter.value;
+
 
 
 rendertickets();
@@ -44,6 +44,8 @@ freeTicket.addEventListener('change', () => {
 
 function rendertickets() {
     ticketsUl.innerHTML = '';
+    const selectFilterVal = Number(selectFilter.value);
+
 
     if (freeTicket.checked && notDoneTicket.checked) {
         alert('Выберите только один фильтр по заявкам');
@@ -122,23 +124,27 @@ function rendertickets() {
             }
             ticketsUl.append(item);
         }
-        else {
-            ticketsUl.append(item)
-        }
 
-        if (selectFilterVal === 0) {
-            ticketsUl.append(item);
-        }
+
         if (selectFilterVal === 1) {
             if (tickets[index].category !== 'Оборудование') {
                 return;
             }
             ticketsUl.append(item)
         }
-        if (selectFilterVal === 2){
-            if(tickets[index].category !== 'Аудитория'){
+        else if (selectFilterVal === 2) {
+            if (tickets[index].category !== 'Аудитория') {
                 return;
             }
+            ticketsUl.append(item)
+        }
+        else if (selectFilterVal === 3) {
+            if (tickets[index].category !== 'Другое') {
+                return;
+            }
+            ticketsUl.append(item)
+        }
+        else {
             ticketsUl.append(item)
         }
 
