@@ -49,8 +49,8 @@ ul {
 
 .itemTicket {
     padding: 5px;
-    border-radius: 5px;
-    background-color: rgb(242, 245, 248);
+    border-radius: 6px;
+    background-color: rgb(227, 234, 241);
     display: flex;
     flex-direction: column;
     gap: 5px;
