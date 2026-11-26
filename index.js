@@ -20,8 +20,15 @@ const freeTicket = document.getElementById('freeTicket');
 
 const notDoneTicket = document.getElementById('NotDoneTicket');
 
+const selectFilter = document.getElementById('SelectFilter');
+const selectFilterVal = +selectFilter.value;
+
 
 rendertickets();
+
+selectFilter.addEventListener('change', () => {
+    rendertickets();
+});
 
 notDoneTicket.addEventListener('click', () => {
     rendertickets();
@@ -89,6 +96,9 @@ function rendertickets() {
         else {
             doneEl.textContent = ` Статус: Не решена`;
         }
+
+
+
         if (tickets[index].done == true) {
             divTicket.append(titleEl, roomEl, categoryEl, doneEl)
             item.append(divTicket, deleteTicketBtn);
@@ -97,6 +107,7 @@ function rendertickets() {
             divTicket.append(titleEl, roomEl, categoryEl, doneEl)
             item.append(divTicket, completeBtn, deleteTicketBtn);
         }
+
 
         if (freeTicket.checked) {
             if (tickets[index].done === false) {
@@ -112,6 +123,22 @@ function rendertickets() {
             ticketsUl.append(item);
         }
         else {
+            ticketsUl.append(item)
+        }
+
+        if (selectFilterVal === 0) {
+            ticketsUl.append(item);
+        }
+        if (selectFilterVal === 1) {
+            if (tickets[index].category !== 'Оборудование') {
+                return;
+            }
+            ticketsUl.append(item)
+        }
+        if (selectFilterVal === 2){
+            if(tickets[index].category !== 'Аудитория'){
+                return;
+            }
             ticketsUl.append(item)
         }
 
